@@ -4,12 +4,12 @@ import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class PrincipalComListas {
 
     public static void main(String[] args) {
-        Filme meuFilme = new Filme("O Poderoso chefão", 2000);
+        Filme meuFilme = new Filme("O Poderoso chefão", 1970);
         meuFilme.avalia(9);
         Filme outroFilme = new Filme("Avatar", 2023);
         outroFilme.avalia(6);
@@ -18,7 +18,7 @@ public class PrincipalComListas {
         Serie lost = new Serie("Lost", 2000);
 
 
-        ArrayList<Titulo> lista = new ArrayList<>();
+        List<Titulo> lista = new LinkedList<>();
         lista.add(filmeDoPaulo);
         lista.add(meuFilme);
         lista.add(outroFilme);
@@ -29,9 +29,26 @@ public class PrincipalComListas {
             if(item instanceof Filme filme) {
                 System.out.println("Classificaçãp: " + filme.getClassificacao());
             }
-
         }
 
+
+        ArrayList<String> buscaPorArtistas = new ArrayList<>();
+        buscaPorArtistas.add("Adam Sandler");
+        buscaPorArtistas.add("Paulo");
+        buscaPorArtistas.add("Johnny");
+        System.out.println(buscaPorArtistas);
+
+        Collections.sort(buscaPorArtistas);
+        System.out.println("Depois da ordenação");
+        System.out.println(buscaPorArtistas);
+
+        System.out.println("Lista de títulos ordemadas");
+        Collections.sort(lista);
+        System.out.println(lista);
+
+        lista.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println("Ordenando pelo ano de lançamento");
+        System.out.println(lista);
 
     }
 }
